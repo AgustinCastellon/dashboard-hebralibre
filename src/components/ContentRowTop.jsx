@@ -3,6 +3,7 @@ import ContentRowMovie from "./ContentRowMovies";
 import GenresInDb from "./GenresInDb";
 import LastMovieInDb from "./LastMovieInDb";
 import { InitDataContext } from "../context/InitDataContext";
+import LastUserInDb from "./LastUserInDb";
 
 
 
@@ -15,16 +16,18 @@ function ContentRowTop () {
 
     const {movies, genres, users} = useContext(InitDataContext)
     const [lastMovie, setLastMovie] = useState(null)
+    const [lastUser, setLastUser] = useState(null)
     const [moviesQuantity, setMoviesQuantity] = useState(null)
     const [genresQuantity, setGenresQuantity] = useState(null)
     const [usersQuantity, setUsersQuantity] = useState(null)
     useEffect(() => {
-        setLastMovie(movies?.data[movies?.data?.length -1])
-        setMoviesQuantity(movies?.data?.length)
-        setGenresQuantity(genres?.data?.length)
+        setLastMovie(movies?.data?.products[movies?.data?.products?.length -1])
+        setLastUser(users?.users[users?.users?.length -1])
+        setMoviesQuantity(movies?.data?.count)
+        setGenresQuantity(genres?.count)
         setUsersQuantity(users?.users?.length)
     }, [movies, genres, users])
-
+    console.log(lastMovie)
     const data = [
         {
             title: "Products in Data Base",
@@ -64,7 +67,9 @@ function ContentRowTop () {
                     {/* <!-- End content row last movie in Data Base --> */}
 
                     {/* <!-- Genres in DB --> */}
+                    <div className="col">
                     <GenresInDb />
+                    {lastUser && <LastUserInDb data = {lastUser} />}</div>
                 </div>
             </div>
         );

@@ -6,8 +6,8 @@ function Movie () {
         const { movies} = useContext(InitDataContext)
         return (
             <>
-                 {/*<!-- MOVIES LIST -->*/}
-                 <h1 className="h5 m-3 font-weight-bold text-gray-800">All the movies in the Database</h1>
+                 {/*<!-- PRODUCTS LIST -->*/}
+                 <h1 className="h5 m-3 font-weight-bold text-gray-800">All the products in the Database</h1>
 
                  {/*<!-- DataTales Example -->*/}
                 <div className="card shadow mb-4">
@@ -17,15 +17,15 @@ function Movie () {
                                 <thead className='bg bg-success text-white'>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Titulo</th>
-                                        <th>Calificación</th>
-                                        <th>Premios</th>
-                                        <th>Duración</th>
+                                        <th>Nombre</th>
+                                        <th>Descripcion</th>
+                                        <th>Categoria</th>
+                                        <th>Imagen</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {
-                                        movies?.data?.map((movie, index) => {
+                                        movies?.data?.products?.map((movie, index) => {
                                             return <MovieList  {...movie} key={index} />
                                         })
                                     }

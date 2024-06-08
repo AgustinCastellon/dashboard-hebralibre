@@ -15,10 +15,10 @@ function InitDataProvider({ children }) {
     useEffect(() => {
         async function getData(){
             try{
-                const movies = await axios.get('http://localhost:3001/api/movies');
-                const genres = await axios.get('http://localhost:3001/api/genres');
+                const movies = await axios.get('http://localhost:3000/api/products/');
+                const genres = await axios.get('http://localhost:3000/api/categories');
                 const users = await axios.get('http://localhost:3000/api/user');
-                setData({ movies: movies.data, genres: genres.data, users: users.data});
+                setData({ movies: movies, genres: genres.data, users: users.data});
             } catch(error){
                 throw new Error(error)
             }
